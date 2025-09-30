@@ -3,7 +3,7 @@ import pickle
 import requests
 
 def fetch_poster(movie_id):
-    url = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key=8c11b51dcfb7a45a2ea0a6110bd16a2e"
+    url = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key=API_KEY"
     try:
         response = requests.get(url, timeout=10, headers={"User-Agent": "Mozilla/5.0"}, verify=False)
         response.raise_for_status()
@@ -38,7 +38,7 @@ movies_list = movies['title'].values
 st.title('Movie Recommender System')
 
 selected_movie_name = st.selectbox(
-    "How would you like to be contacted?",
+    "Movie",
    movies_list,
 )
 
@@ -48,3 +48,4 @@ if st.button('Get Movie Recommendations'):
     for idx, col in enumerate(cols):
         col.text(names[idx])
         col.image(posters[idx])
+
